@@ -16,23 +16,17 @@ const images = [
 const listGalleryEl = document.querySelector("ul.gallery");
 
 const makeItemImgToList = (images) => {
-  return images.map((image) => {
-    const itemEl = document.createElement("li");
-    itemEl.insertAdjacentHTML(
-      "beforeend",
-      `<img class='img' src='${image.url}' alt='${image.alt}' style='width :400px; height :400px; object-fit :cover; object-position :center;'></img>`
-    );
+  listGalleryEl.style.display = "flex";
+  listGalleryEl.style.flexWrap = "wrap";
+  listGalleryEl.style.justifyContent = "space-between";
 
-    itemEl.classList.add("item");
-
-    itemEl.style.listStyle = "none";
-    listGalleryEl.style.display = "flex";
-    listGalleryEl.style.flexWrap = "wrap";
-    listGalleryEl.style.justifyContent = "space-between";
-
-    return itemEl;
-  });
+  return images
+    .map(
+      (image) =>
+        `<li class='item' style='list-style: none;'><img class='img' src='${image.url}' alt='${image.alt}' style='width :400px; height :400px; object-fit :cover; object-position :center;'></img></li>`
+    )
+    .join("");
 };
 
 const elements = makeItemImgToList(images);
-listGalleryEl.append(...elements);
+listGalleryEl.innerHTML = elements;

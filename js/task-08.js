@@ -15,10 +15,10 @@ function onFormSubmit(event) {
 
   if (!formEmail || !formPassword) {
     alert("Всі поля повинні бути заповнені!");
-  }
-
-  formData.forEach((value, name) => (objectFormData[name] = value));
+  } else {
+     formData.forEach((value, name) => (objectFormData[name] = value));
   console.log(objectFormData);
+  }
 
   form.reset();
 }
